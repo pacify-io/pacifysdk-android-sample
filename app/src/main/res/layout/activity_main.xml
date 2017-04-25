@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/main_page_color">
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <EditText
+            android:id="@+id/api_key_field"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="30dp"
+            android:background="@drawable/edit_text_with_rounded_corners"
+            android:hint="@string/api_key"
+            android:inputType="textEmailAddress"
+            android:maxLines="1"
+            android:minHeight="@dimen/edit_text_min_height"
+            android:paddingLeft="5dp"
+            android:textColorHint="@android:color/darker_gray" />
+
+        <EditText
+            android:id="@+id/token_field"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/edit_text_with_rounded_corners"
+            android:hint="@string/user_session_token"
+            android:inputType="textEmailAddress"
+            android:maxLines="1"
+            android:minHeight="@dimen/edit_text_min_height"
+            android:paddingLeft="5dp"
+            android:textColorHint="@android:color/darker_gray" />
+
+        <EditText
+            android:id="@+id/coupon_field"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/edit_text_with_rounded_corners"
+            android:hint="@string/coupon"
+            android:inputType="textEmailAddress"
+            android:maxLines="1"
+            android:minHeight="@dimen/edit_text_min_height"
+            android:paddingLeft="5dp"
+            android:textColorHint="@android:color/darker_gray" />
+
+        <Button
+            android:id="@+id/start_av_conference"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/registration_btn_bg"
+            android:padding="15dp"
+            android:text="@string/call_pacify"
+            android:textColor="@color/white"
+            android:textSize="20sp" />
+
+    </LinearLayout>
+
+
+</ScrollView>
+

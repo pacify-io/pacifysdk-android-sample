@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">PacifySdkAndroidSample</string>
+    <string name="start_video_conference">Start video conference</string>
+    <string name="api_key">Api key</string>
+    <string name="user_session_token">User session token</string>
+    <string name="coupon">Coupon (optional)</string>
+    <string name="call_pacify">Call Pacify</string>
+</resources>
