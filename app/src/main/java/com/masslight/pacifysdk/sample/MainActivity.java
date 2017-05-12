@@ -25,8 +25,7 @@ public final class MainActivity extends AppCompatActivity implements PacifySdk.P
 
     private static final String TAG = MainActivity.class.getCanonicalName();
 
-    //    private static final String SAMPLE_API_KEY = "test-3-org-api-key";
-    private static final String SAMPLE_API_KEY = "8271740bb0ded5e1ff42258c794920e7"; //medela staging
+    private static final String SAMPLE_API_KEY = "your_api_token";
     private static final String SAMPLE_USER_SESSION_TOKEN = "valid_1234";
     private static final String SAMPLE_COUPON = "6UA4CSIV";
 
