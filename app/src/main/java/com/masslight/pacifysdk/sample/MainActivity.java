@@ -27,7 +27,7 @@ public final class MainActivity extends AppCompatActivity implements PacifySdk.P
 
     private static final String SAMPLE_API_KEY = "your_api_token";
     private static final String SAMPLE_USER_SESSION_TOKEN = "valid_1234";
-    private static final String SAMPLE_COUPON = "6UA4CSIV";
+    private static final String SAMPLE_COUPON = "valid_coupon";
 
     private EditText apiKeyField;
     private EditText tokenField;
@@ -99,13 +99,13 @@ public final class MainActivity extends AppCompatActivity implements PacifySdk.P
 
         final PacifySupportInfo pacifySupportInfo = new PacifySupportInfo("support@company.com", "1234567890");
         final PacifyAppearance pacifyAppearance = new PacifyAppearance(
-                Color.ofRgb(249.0 / 255, 249.0 / 255, 249.0 / 255),
-                Color.ofRgb(253.0 / 255, 217.0 / 255, 123.0 / 255),
-                Color.BLACK.withAlphaComponent(0.8),
-                Color.ofRgb(143.0 / 255, 98.0 / 255, 146.0 / 255),
-                Color.WHITE,
-                Color.ofRgb(76.0 / 255, 0, 82.0 / 255),
-                ContextCompat.getDrawable(getApplicationContext(), R.drawable.medela_logo)
+                Color.ofResId(this, R.color.background_color),
+                Color.ofResId(this, R.color.toolbar_tint_color),
+                Color.ofResId(this, R.color.toolbar_title_color),
+                Color.ofResId(this, R.color.button_background_color),
+                Color.ofResId(this, R.color.button_title_color),
+                Color.ofResId(this, R.color.text_color),
+                ContextCompat.getDrawable(this, R.drawable.medela_logo)
         );
         final PacifySettings pacifySettings = new PacifySettings(
                 pacifyAppearance,
