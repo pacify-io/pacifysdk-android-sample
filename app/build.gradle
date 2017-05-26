@@ -11,10 +11,22 @@ android {
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
+
+    signingConfigs {
+
+        dummySigning {
+            storeFile file("signing.jks")
+            storePassword("signing")
+            keyAlias "signing"
+            keyPassword "signing"
+        }
+    }
+
     buildTypes {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.dummySigning
         }
     }
 }
@@ -28,5 +40,5 @@ dependencies {
     compile 'com.android.support.constraint:constraint-layout:1.0.2'
     testCompile 'junit:junit:4.12'
 
-    compile 'com.masslight:libs-pacifysdk:1.0.0-beta5'
+    compile 'com.masslight:libs-pacifysdk:1.0.0-beta7'
 }

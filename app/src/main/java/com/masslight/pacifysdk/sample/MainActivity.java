@@ -8,8 +8,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
-import com.masslight.lib.pacifysdk.core.model.Color;
-import com.masslight.lib.pacifysdk.core.model.Token;
 import com.masslight.lib.pacifysdk.sdk.PacifySdk;
 import com.masslight.lib.pacifysdk.sdk.model.PacifyEnvironment;
 import com.masslight.lib.pacifysdk.sdk.model.entity.Coupon;
@@ -18,6 +16,8 @@ import com.masslight.lib.pacifysdk.sdk.model.entity.PacifySettings;
 import com.masslight.lib.pacifysdk.sdk.model.entity.PacifySupportInfo;
 import com.masslight.lib.pacifysdk.sdk.model.entity.PacifyUserData;
 import com.masslight.lib.pacifysdk.sdk.model.entity.TokensInfo;
+import com.masslight.pacify.framework.core.model.Color;
+import com.masslight.pacify.framework.core.model.Token;
 
 import sample.pacifysdk.masslight.com.pacifysdkandroidsample.R;
 
