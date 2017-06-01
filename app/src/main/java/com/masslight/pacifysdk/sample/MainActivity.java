@@ -1,5 +1,7 @@
 package com.masslight.pacifysdk.sample;
 
+import android.app.Activity;
+import android.app.Application;
 import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
@@ -7,7 +9,9 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
+import com.masslight.lib.pacifysdk.sdk.DefaultActivityLifecycleCallbacks;
 import com.masslight.lib.pacifysdk.sdk.PacifySdk;
 import com.masslight.lib.pacifysdk.sdk.model.PacifyEnvironment;
 import com.masslight.lib.pacifysdk.sdk.model.entity.Coupon;
@@ -16,6 +20,7 @@ import com.masslight.lib.pacifysdk.sdk.model.entity.PacifySettings;
 import com.masslight.lib.pacifysdk.sdk.model.entity.PacifySupportInfo;
 import com.masslight.lib.pacifysdk.sdk.model.entity.PacifyUserData;
 import com.masslight.lib.pacifysdk.sdk.model.entity.TokensInfo;
+import com.masslight.lib.pacifysdk.sdk.ui.PacifySdkActivity;
 import com.masslight.pacify.framework.core.model.Color;
 import com.masslight.pacify.framework.core.model.Token;
 
@@ -34,6 +39,19 @@ public final class MainActivity extends AppCompatActivity implements PacifySdk.P
     private EditText couponField;
     private Button callPacifyButton;
 
+    /**
+     * Just reveals using of {@link PacifySdk#isRunning()} method :-)
+     */
+    private final DefaultActivityLifecycleCallbacks pacifySdkRunningChecker = new DefaultActivityLifecycleCallbacks() {
+        @Override
+        public void onActivityStarted(Activity activity) {
+            final boolean isNotSdkActivity = !(activity instanceof PacifySdkActivity);
+            if (PacifySdk.isRunning()) {
+                Toast.makeText(getApplicationContext(), "PacifySdk is live and running", Toast.LENGTH_LONG).show();
+            }
+        }
+    };
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -42,6 +60,17 @@ public final class MainActivity extends AppCompatActivity implements PacifySdk.P
         setListeners();
         enableCallToPacifyButtonIfNeeded();
         preFillFieldsWithSampleData();
+        registerCheckIsPacifySdkRunningListener();
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        ((Application) getApplicationContext()).unregisterActivityLifecycleCallbacks(pacifySdkRunningChecker);
+    }
+
+    private void registerCheckIsPacifySdkRunningListener() {
+        ((Application) getApplicationContext()).registerActivityLifecycleCallbacks(pacifySdkRunningChecker);
     }
 
     private void bindViews() {
