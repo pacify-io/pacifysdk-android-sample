@@ -146,7 +146,7 @@ public final class MainActivity extends AppCompatActivity implements PacifySdk.P
         PacifySdk.call(
                 MainActivity.this,
                 tokensInfo,
-                Coupon.create(SAMPLE_COUPON),
+                Coupon.notExists(),
                 pacifyUserData,
                 pacifySettings,
                 this
@@ -161,5 +161,6 @@ public final class MainActivity extends AppCompatActivity implements PacifySdk.P
     @Override
     public void onError(Throwable exception) {
         Log.e(TAG, "Library call execution failed with error: ", exception);
+        Toast.makeText(getApplicationContext(), exception.getMessage(), Toast.LENGTH_LONG).show();
     }
 }
