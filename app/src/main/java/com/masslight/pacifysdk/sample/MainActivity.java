@@ -20,7 +20,6 @@ import com.masslight.lib.pacifysdk.sdk.model.entity.PacifySettings;
 import com.masslight.lib.pacifysdk.sdk.model.entity.PacifySupportInfo;
 import com.masslight.lib.pacifysdk.sdk.model.entity.PacifyUserData;
 import com.masslight.lib.pacifysdk.sdk.model.entity.TokensInfo;
-import com.masslight.lib.pacifysdk.sdk.ui.PacifySdkActivity;
 import com.masslight.pacify.framework.core.model.Color;
 import com.masslight.pacify.framework.core.model.Token;
 
@@ -45,7 +44,6 @@ public final class MainActivity extends AppCompatActivity implements PacifySdk.P
     private final DefaultActivityLifecycleCallbacks pacifySdkRunningChecker = new DefaultActivityLifecycleCallbacks() {
         @Override
         public void onActivityStarted(Activity activity) {
-            final boolean isNotSdkActivity = !(activity instanceof PacifySdkActivity);
             if (PacifySdk.isRunning()) {
                 Toast.makeText(getApplicationContext(), "PacifySdk is live and running", Toast.LENGTH_LONG).show();
             }
