@@ -1,7 +1,5 @@
 package com.masslight.pacifysdk.sample;
 
-import android.app.Activity;
-import android.app.Application;
 import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
@@ -11,16 +9,15 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.masslight.lib.pacifysdk.sdk.DefaultActivityLifecycleCallbacks;
 import com.masslight.lib.pacifysdk.sdk.PacifySdk;
-import com.masslight.lib.pacifysdk.sdk.model.PacifyEnvironment;
-import com.masslight.lib.pacifysdk.sdk.model.entity.Coupon;
-import com.masslight.lib.pacifysdk.sdk.model.entity.PacifyAppearance;
-import com.masslight.lib.pacifysdk.sdk.model.entity.PacifySettings;
-import com.masslight.lib.pacifysdk.sdk.model.entity.PacifySupportInfo;
-import com.masslight.lib.pacifysdk.sdk.model.entity.PacifyUserData;
-import com.masslight.lib.pacifysdk.sdk.model.entity.TokensInfo;
+import com.masslight.lib.pacifysdk.sdk.entity.PacifyEnvironment;
+import com.masslight.lib.pacifysdk.sdk.entity.PacifySdkSettings;
+import com.masslight.lib.pacifysdk.sdk.entity.PacifySupportInfo;
+import com.masslight.lib.pacifysdk.sdk.entity.PacifyUserData;
+import com.masslight.lib.pacifysdk.sdk.entity.TokensInfo;
 import com.masslight.pacify.framework.core.model.Color;
+import com.masslight.pacify.framework.core.model.Coupon;
+import com.masslight.pacify.framework.core.model.PacifyAppearance;
 import com.masslight.pacify.framework.core.model.Token;
 
 import sample.pacifysdk.masslight.com.pacifysdkandroidsample.R;
@@ -39,16 +36,15 @@ public final class MainActivity extends AppCompatActivity implements PacifySdk.P
     private Button callPacifyButton;
 
     /**
-     * Just reveals using of {@link PacifySdk#isRunning()} method :-)
+     * Just demonstrates use of {@link PacifySdk#isRunning()} method :-)
      */
-    private final DefaultActivityLifecycleCallbacks pacifySdkRunningChecker = new DefaultActivityLifecycleCallbacks() {
-        @Override
-        public void onActivityStarted(Activity activity) {
-            if (PacifySdk.isRunning()) {
-                Toast.makeText(getApplicationContext(), "PacifySdk is live and running", Toast.LENGTH_LONG).show();
-            }
+    @Override
+    protected void onStart() {
+        super.onStart();
+        if (PacifySdk.isRunning()) {
+            Toast.makeText(this, "PacifySdk is still running", Toast.LENGTH_LONG).show();
         }
-    };
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,17 +54,6 @@ public final class MainActivity extends AppCompatActivity implements PacifySdk.P
         setListeners();
         enableCallToPacifyButtonIfNeeded();
         preFillFieldsWithSampleData();
-        registerCheckIsPacifySdkRunningListener();
-    }
-
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        ((Application) getApplicationContext()).unregisterActivityLifecycleCallbacks(pacifySdkRunningChecker);
-    }
-
-    private void registerCheckIsPacifySdkRunningListener() {
-        ((Application) getApplicationContext()).registerActivityLifecycleCallbacks(pacifySdkRunningChecker);
     }
 
     private void bindViews() {
@@ -134,7 +119,7 @@ public final class MainActivity extends AppCompatActivity implements PacifySdk.P
                 Color.ofResId(this, R.color.text_color),
                 ContextCompat.getDrawable(this, R.drawable.medela_logo)
         );
-        final PacifySettings pacifySettings = new PacifySettings(
+        final PacifySdkSettings pacifySettings = new PacifySdkSettings(
                 pacifyAppearance,
                 PacifyEnvironment.Testing,
                 pacifySupportInfo,
