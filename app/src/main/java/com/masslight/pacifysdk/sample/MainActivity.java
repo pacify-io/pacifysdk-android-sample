@@ -123,7 +123,7 @@ public final class MainActivity extends AppCompatActivity implements PacifySdk.P
                 pacifyAppearance,
                 PacifyEnvironment.Testing,
                 pacifySupportInfo,
-                "SampleApp"
+                "SampleApp" //LanguageManager.SDKSupportedLanguage.French_CA, Currency.CAD These params coming soon!
         );
 
         PacifySdk.call(
