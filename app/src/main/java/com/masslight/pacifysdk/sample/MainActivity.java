@@ -100,7 +100,8 @@ public final class MainActivity extends AppCompatActivity implements PacifySdk.P
         final PacifyUserData pacifyUserData = new PacifyUserData(
                 "Mister Twister",
                 "Bos", // optional, used for payment only
-                "mistertwister@matrix.com"
+                "mistertwister@matrix.com",
+                null
         );
 
         final TokensInfo tokensInfo = new TokensInfo(
