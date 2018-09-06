@@ -23,4 +23,8 @@
 # If you keep the line number information, uncomment this to
 # hide the original source file name.
 #-renamesourcefileattribute SourceFile
--dontwarn okio.**
+#-dontwarn okio.**
+
+-ignorewarnings
+-keep public class com.amazonaws.**
+-keep public class com.masslight.pacify.framework.core.model.** { *; }
