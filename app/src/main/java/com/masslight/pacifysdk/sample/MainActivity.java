@@ -15,8 +15,10 @@ import com.masslight.lib.pacifysdk.sdk.entity.PacifySdkSettings;
 import com.masslight.lib.pacifysdk.sdk.entity.PacifySupportInfo;
 import com.masslight.lib.pacifysdk.sdk.entity.PacifyUserData;
 import com.masslight.lib.pacifysdk.sdk.entity.TokensInfo;
+import com.masslight.pacify.framework.core.manager.LanguageManager;
 import com.masslight.pacify.framework.core.model.Color;
 import com.masslight.pacify.framework.core.model.Coupon;
+import com.masslight.pacify.framework.core.model.Currency;
 import com.masslight.pacify.framework.core.model.PacifyAppearance;
 import com.masslight.pacify.framework.core.model.Token;
 
@@ -98,10 +100,9 @@ public final class MainActivity extends AppCompatActivity implements PacifySdk.P
 
     private void launchVideoConference() {
         final PacifyUserData pacifyUserData = new PacifyUserData(
-                "Mister Twister",
-                "Bos", // optional, used for payment only
-                "mistertwister@matrix.com",
-                null
+                "First Name",
+                "Last Name", // optional, used for payment only
+                "anemail@domain.com"
         );
 
         final TokensInfo tokensInfo = new TokensInfo(
@@ -124,7 +125,9 @@ public final class MainActivity extends AppCompatActivity implements PacifySdk.P
                 pacifyAppearance,
                 PacifyEnvironment.Testing,
                 pacifySupportInfo,
-                "SampleApp" //LanguageManager.SDKSupportedLanguage.French_CA, Currency.CAD These params coming soon!
+                "SampleApp",
+                LanguageManager.SDKSupportedLanguage.French_CA,  // pass in appropriate language with every launch.
+                Currency.CAD // pass in appropriate currency with every launch.
         );
 
         PacifySdk.call(
