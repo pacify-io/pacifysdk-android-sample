@@ -43,5 +43,5 @@ dependencies {
     implementation 'com.android.support.constraint:constraint-layout:1.1.3'
     testImplementation 'junit:junit:4.12'
 
-    implementation 'com.masslight:libs-pacifysdk:1.0.10'
+    implementation 'com.masslight:libs-pacifysdk:1.0.11'
 }
