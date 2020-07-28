@@ -7,6 +7,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.masslight.lib.pacifysdk.sdk.PacifySdk;
@@ -21,6 +22,8 @@ import com.masslight.pacify.framework.core.model.Coupon;
 import com.masslight.pacify.framework.core.model.Currency;
 import com.masslight.pacify.framework.core.model.PacifyAppearance;
 import com.masslight.pacify.framework.core.model.Token;
+
+import org.apache.commons.lang3.StringUtils;
 
 import sample.pacifysdk.masslight.com.pacifysdkandroidsample.R;
 
@@ -106,9 +109,9 @@ public final class MainActivity extends AppCompatActivity implements PacifySdk.P
         );
 
         final TokensInfo tokensInfo = new TokensInfo(
-                new Token(apiKeyField.getText().toString()),
+                new Token(getText(apiKeyField)),
 //                new Token("valid_1001")
-                new Token(tokenField.getText().toString())
+                new Token(getText(tokenField))
         );
 
         final PacifySupportInfo pacifySupportInfo = new PacifySupportInfo("support@company.com", "1234567890");
@@ -126,18 +129,31 @@ public final class MainActivity extends AppCompatActivity implements PacifySdk.P
                 PacifyEnvironment.Testing,
                 pacifySupportInfo,
                 "SampleApp",
-                LanguageManager.SDKSupportedLanguage.French_CA,  // pass in appropriate language with every launch.
-                Currency.CAD // pass in appropriate currency with every launch.
+                LanguageManager.SDKSupportedLanguage.English,  // pass in appropriate language with every launch.
+                Currency.USD // pass in appropriate currency with every launch.
         );
+
+        String couponAsString = getText(couponField);
+        Coupon coupon = couponAsString.isEmpty() ? Coupon.notExists() : Coupon.create(couponAsString);
 
         PacifySdk.call(
                 MainActivity.this,
                 tokensInfo,
-                Coupon.notExists(),
+                coupon,
                 pacifyUserData,
                 pacifySettings,
                 this
         );
+    }
+
+    private static String getText(TextView fromView) {
+        if (fromView == null) {
+            return "";
+        }
+        if (fromView.getText() == null) {
+            return "";
+        }
+        return StringUtils.defaultString(fromView.getText().toString());
     }
 
     @Override
